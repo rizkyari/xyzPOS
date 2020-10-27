@@ -39,7 +39,9 @@ class Login extends Component{
                                     <label for="checkbox" className='ml-3'>Ingat Saya</label>
                                 </div>
                                 <div className='mt-8'>
-                                    <button type='submit' style={{backgroundColor:'#EB414F', color:'#fff', width:'300px'}} className='px-8 py-3 font-bold border rounded-full focus:outline-none'>Masuk</button>
+                                <Link to='/user'><button type='button' style={{backgroundColor:'#EB414F', color:'#fff', width:'300px'}} className='px-8 py-3 font-bold border rounded-full focus:outline-none'>
+                                        Masuk
+                                    </button></Link>
                                 </div>
                                 <div className="text-center">
                                     <span>Belum punya akun? </span>

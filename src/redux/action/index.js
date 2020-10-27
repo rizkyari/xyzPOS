@@ -10,3 +10,10 @@ export const handleRegister = (data,login) =>({
     data,
     login,
 })
+
+export const handleSubmit = (name,email,password)=>({
+    type: types.REGISTER,
+    name,
+    email,
+    password,
+})
