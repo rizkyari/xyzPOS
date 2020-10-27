@@ -1,13 +1,22 @@
 import React,{Component} from 'react';
 import Navbar from './../component/layout/navbar';
 import Hero from './../component/asset/hero-section-illustration.svg';
+import Subscribe from './Subscribe';
+import Footer from './../component/layout/footer';
 
 class Landing extends Component{
+    constructor(props){
+        super(props)
+        this.state={
+            show:false
+        }
+    }
+    
     render(){
         return(
             <>
                 <Navbar/>
-                <div className="xl:flex xl:justify-between items-center">
+                <div className="xl:flex xl:justify-between items-center mb-16">
                     <div style={{fontSize:"45px",float:"left", position:"relative",left:"10%"}} className="font-semibold">
                         <div style={{display:"inline-block",textAlign:'left'}}>
                             <p>Solusi terbaik untuk</p>
@@ -21,6 +30,8 @@ class Landing extends Component{
                         <img src={Hero} style={{width:"600px",height:"580px"}}/>
                     </div>
                 </div>
+                <Subscribe/>
+                <Footer/>
             </>
         )
     }
