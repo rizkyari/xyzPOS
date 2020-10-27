@@ -8,6 +8,35 @@ import Pass from './../component/asset/password-24px.svg';
 import Name from './../component/asset/face-24px.svg';
 import './style.css'
 class Register extends Component{
+    constructor(props){
+        super(props)
+        this.state={
+            name:false,
+            email:false,
+            password:false,
+        }
+    }
+
+    handleName(e){
+        this.setState({name : e.target.value})
+    };
+
+    handleEmail(e){
+        this.setState({email : e.target.value})
+    };
+
+    handlePassword(e){
+        this.setState({password : e.target.value})
+    };
+
+    handleSubmits(e){
+        e.preventDefault();
+        this.props.handleSubmit(this.state.name,this.state.email,this.state.password);
+        if(this.state.name && this.state.email && this.state.password !== false){
+            this.props.handleRegister(false,true)
+        }
+    }
+
     render(){
         return(
             <div style={{display: `${this.props.modal ? "block" : "none"}`,}} className='py-8'>
@@ -26,18 +55,18 @@ class Register extends Component{
                             <form>
                                 <div style={{position:'relative'}} className='my-5'>
                                     <img src={Name} style={{position:'absolute', height:'38px',width:'38px', top:'13%', left:'5%'}} />
-                                    <input type="text" id="name" name="name" placeholder="Name" className='px-5 py-3 border rounded-full pl-16 focus:outline-none' style={{width:'300px',borderColor:'#EB414F', borderWidth:'3px'}}/>
+                                    <input onChange={(e)=>this.handleName(e)} type="text" id="name" name="name" placeholder="Name" className='px-5 py-3 border rounded-full pl-16 focus:outline-none' style={{width:'300px',borderColor:'#EB414F', borderWidth:'3px'}}/>
                                 </div>
                                 <div style={{position:'relative'}}>
                                     <img src={Email} style={{position:'absolute', height:'38px',width:'38px', top:'13%', left:'5%'}} />
-                                    <input type="email" id="email" name="email" placeholder="Email" className='px-5 py-3 border rounded-full pl-16 focus:outline-none' style={{width:'300px',borderColor:'#EB414F', borderWidth:'3px'}}/>
+                                    <input onChange={(e)=>this.handleEmail(e)} type="email" id="email" name="email" placeholder="Email" className='px-5 py-3 border rounded-full pl-16 focus:outline-none' style={{width:'300px',borderColor:'#EB414F', borderWidth:'3px'}}/>
                                 </div>
                                 <div style={{position:'relative'}} className='my-5 mb-5'>
                                     <img src={Pass} style={{position:'absolute', height:'38px',width:'38px', top:'13%', left:'5%'}} />
-                                    <input type="password" id="password" name="password" placeholder="Password" className='px-5 py-3 border rounded-full pl-16 focus:outline-none' style={{width:'300px',borderColor:'#EB414F',borderWidth:'3px'}}/>
+                                    <input onChange={(e)=>this.handlePassword(e)} type="password" id="password" name="password" placeholder="Password" className='px-5 py-3 border rounded-full pl-16 focus:outline-none' style={{width:'300px',borderColor:'#EB414F',borderWidth:'3px'}}/>
                                 </div>
                                 <div className='mt-8'>
-                                    <button type='submit' style={{backgroundColor:'#EB414F', color:'#fff', width:'300px'}} className='px-8 py-3 font-bold border rounded-full focus:outline-none'>Daftar</button>
+                                    <button onClick={(e)=>this.handleSubmits(e)} type='button' style={{backgroundColor:'#EB414F', color:'#fff', width:'300px'}} className='px-8 py-3 font-bold border rounded-full focus:outline-none'>Daftar</button>
                                 </div>
                                 <div className="text-center">
                                     <span>Sudah punya akun? </span>
@@ -64,6 +93,7 @@ const mapDispatchToProps = dispatch => {
     return {
         handleOnModal: (data) => dispatch(action.handleOnModal(data)),
         handleRegister: (data,register) => dispatch(action.handleRegister(data,register)),
+        handleSubmit: (name,email,password) => dispatch(action.handleSubmit(name,email,password)),
     }
 }
 

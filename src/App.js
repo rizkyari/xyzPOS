@@ -6,6 +6,7 @@ import { BrowserRouter, Router, Route, Switch, Redirect } from 'react-router-dom
 import './App.css';
 import './tailwind.css';
 import Landing from './page/Landing';
+import User from './page/User';   
 const store = configureStore()
 
 function App() {
@@ -15,7 +16,8 @@ function App() {
         <Router history={history}>
           <BrowserRouter>
               <Switch>
-                <Landing/>
+                <Route exact path="/" component={Landing}/>
+                <Route exact path="/user" component={User}/>
               </Switch>
           </BrowserRouter>
         </Router>
